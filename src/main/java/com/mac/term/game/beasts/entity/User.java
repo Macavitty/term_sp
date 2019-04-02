@@ -36,6 +36,10 @@ public class User implements Serializable {
 
     Integer money;
 
+    Integer exp;
+
+    Integer level;
+
     @Column(name = "description")
     String description;
 

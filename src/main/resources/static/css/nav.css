@@ -9,65 +9,63 @@ nav {
   justify-content: center;
   position: relative;
   width: fit-content;
+  margin: 10%;
 }
 
-ul {
-  align-self: flex-start;
-  background-color: white;
-  margin: 0%;
-  padding: 0%;
-  position: absolute;
-  top: 60px;
-  width: fit-content;
-}
+/*.nav-panel{*/
+/*  align-self: flex-start;*/
+/*  background-color: white;*/
+/*  margin: 100%;*/
+/*  padding: 0%;*/
+/*  position: absolute;*/
+/*  top: 40px;*/
+/*  width: fit-content;*/
+/*}*/
 
-a, li{
-  /*text-decoration: none;*/
-  color: #000;
-  padding: 5%;
-  font-size: 1.5em;
-  height: fit-content;
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  list-style-type: none;
-  text-transform: uppercase;
-  transition: all .2s ease;
-  text-decoration: none;
-}
-li {
-  border: 0.01em solid rgba(0, 0, 0, 0.45);
-}
+/*.nav-panel {*/
+/*  !*text-decoration: none;*!*/
+/*  color: #000;*/
+/*  padding: 3%;*/
+/*  font-size: 120%;*/
+/*  height: fit-content;*/
+/*  align-items: center;*/
+/*  cursor: pointer;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  list-style-type: none;*/
+/*  text-transform: uppercase;*/
+/*  transition: all .2s ease;*/
+/*}*/
+/*li {*/
+/*  border: 0.01em solid rgba(0, 0, 0, 0.45);*/
+/*}*/
 
-li:hover{
-  background-color: #2c3e50;
-}
+/*li:hover{*/
+/*  background-color: #2c3e50;*/
+/*}*/
 
-a:hover {
-  text-decoration: none;
-  color: #eeeeee;
-}
+/*a:hover {*/
+/*  text-decoration: none;*/
+/*  color: #eeeeee;*/
+/*}*/
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .2s ease;
-}
+/*.fade-enter-active,*/
+/*.fade-leave-active {*/
+/*  transition: opacity .2s ease;*/
+/*}*/
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+/*.fade-enter,*/
+/*.fade-leave-to {*/
+/*  opacity: 0;*/
+/*}*/
 
-.menu, .clear {
-  cursor: pointer;
-  font-size: 3em;
-  /*padding-left: 5%;*/
-  transition: all .2s ease;
-  color: #395067;
-}
+/*.menu, .clear {*/
+/*  cursor: pointer;*/
+/*  font-size: 2em;*/
+/*  !*padding-left: 5%;*!*/
+/*  transition: all .2s ease;*/
+/*  color: #395067;*/
+/*}*/
 
-.topnav-right {
-  float: left;
-}
+

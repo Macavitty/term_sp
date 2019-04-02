@@ -1,34 +1,34 @@
 /*@import url("/node_modules/@syncfusion/ej2-base/styles/material.css");*/
 /*@import url("/node_modules/@syncfusion/ej2-vue-popups/styles/material.css");*/
 /*============= mess ===============*/
-header {
-  /*text-align: center;*/
-  width: 100%;
-  /*color: #f8fcf6;*/
-  margin-bottom: 1%;
-  font-weight: bolder;
-  font-style: italic;
-  font-size: 2.8em;
-  float: top;
-  /*background-color: #3e3b3bd4;*/
-}
+/*header {*/
+  /*!*text-align: center;*!*/
+  /*width: 100%;*/
+  /*!*color: #f8fcf6;*!*/
+  /*margin-bottom: 1%;*/
+  /*font-weight: bolder;*/
+  /*font-style: italic;*/
+  /*font-size: 2.8em;*/
+  /*float: top;*/
+  /*!*background-color: #3e3b3bd4;*!*/
+/*}*/
 
-footer {
-  /*left: 0;*/
-  margin: 1% auto;
-  text-align: end;
-  width: fit-content;
-  /*background-color: #3e3b3bd4;*/
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
+/*footer {*/
+  /*!*left: 0;*!*/
+  /*margin: 1% auto;*/
+  /*text-align: end;*/
+  /*width: fit-content;*/
+  /*!*background-color: #3e3b3bd4;*!*/
+  /*position: absolute;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+/*}*/
 
 
-.left_meta {
-  float: left;
-  margin-left: 10%;
-}
+/*.left_meta {*/
+  /*float: left;*/
+  /*margin-left: 10%;*/
+/*}*/
 
 /*.right_meta{*/
 /*    float: right;*/

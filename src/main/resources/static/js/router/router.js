@@ -6,6 +6,7 @@ import Map from 'js/pages/Map.vue'
 import Account from 'js/pages/Account.vue'
 import CraftPage from 'js/pages/CraftPage.vue'
 import Glossary from 'js/pages/Glossary.vue'
+// import Fight from 'js/pages/Fight.vue'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       name: 'Glossary',
       component: Glossary
     }
+    // {
+    //   path: '/fight',
+    //   name: 'Fight',
+    //   component: Fight
+    // }
   ],
   mode: 'history'
 })

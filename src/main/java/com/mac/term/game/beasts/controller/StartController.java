@@ -20,6 +20,7 @@ public class StartController {
         Map<Object, Object> m = new HashMap<>();
         m.put("profile", user);
         model.addAttribute("magic_data", m);
+        model.addAttribute("user_info", user);
         return "index";
     }
 }

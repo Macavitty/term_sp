@@ -40,6 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 nu.setGender((String) map.get("gender"));
                 nu.setEmail((String) map.get("email"));
                 nu.setMoney(42);
+                nu.setExp(0);
+                nu.setLevel(0);
                 nu.setNick((String) map.get("name"));
                 nu.setIcon((String) map.get("picture"));
                 return nu;

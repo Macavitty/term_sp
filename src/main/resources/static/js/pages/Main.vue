@@ -5,12 +5,12 @@
         </div>
         <div v-else>
             <AppHeader></AppHeader>
-            <div class="topnav-right">
-                <AppNavigation></AppNavigation>
-            </div>
+<!--            <div class="topnav-right">-->
+<!--                <AppNavigation></AppNavigation>-->
+<!--            </div>-->
             <h1 align="center">Это первая страничка, куда пользователь попадает после логина/регистрации</h1>
             <h1 align="center">можно разместить мануал по игре</h1>
-            <AppFooter></AppFooter>
+<!--            <AppFooter></AppFooter>-->
         </div>
     </div>
 </template>
