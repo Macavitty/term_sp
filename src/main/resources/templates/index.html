@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/zombie.png">
+<!--    <script src="https://unpkg.com/v-tooltip"></script>-->
+    <script th:inline="javascript">
+        let magic_data = [[${magic_data}]]; <!-- comes from HomeController -->
+    </script>
+    <title>Beasts</title>
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but this game doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app">
+    <script th:src="'http://localhost:8000/main.js'"></script>
+<!--    <script th:src="'main.js'"></script>-->
+</div>
+
+</body>
+</html>
+
+
+
+<style>
+
+</style>
