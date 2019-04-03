@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.Authenticator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -35,8 +32,21 @@ public class StartController {
         Map<Object, Object> mm = new HashMap<>();
 
         Map<Object, Object> lastMap = new HashMap<>();
-        lastMap.put("be", creatureRepo.findByOwner(user));
-        lastMap.put("size", creatureRepo.findByOwner(user).size());
+        List<Creature> total = creatureRepo.findByOwner(user);
+        List<Creature> active = new ArrayList<>();
+        List<Creature> save = new ArrayList<>();
+        for (int i = 0; i < 3; i++){
+            active.add(total.get(i));
+        }
+        for (int i = 3; i < total.size(); i++){
+            save.add(total.get(i));
+        }
+        List<Creature> locations = locationRepo.findByOwner(user);
+        List<Creature> allCreatures = creatureRepo.findAll();
+
+
+        lastMap.put("active", active);
+        lastMap.put("passive", save);
         m.put("profile", user);
         m.put("count", user == null ? 0 : user.getCreatures() == null ? 0 : user.getCreatures().size());
         model.addAttribute("magic_data", m);

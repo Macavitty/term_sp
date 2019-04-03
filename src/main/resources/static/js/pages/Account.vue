@@ -31,10 +31,10 @@
         <div id="carouselIndicators1" class="carousel slide m-3" data-ride="carousel"
              style="height: 25vh; background-color: rgba(66, 205, 170, 0.5)">
           <ol class="carousel-indicators">
-            <li data-target="#carouselIndicators1"  v-for="(beast, index) in showResults" :class="{active: index===0}"></li>
+            <li data-target="#carouselIndicators1"  v-for="(beast, index) in otherBeasts" :class="{active: index===0}"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item text-center" v-for="(beast, index) in showResults" :class="{active: index===0}">
+            <div class="carousel-item text-center" v-for="(beast, index) in otherBeasts" :class="{active: index===0}">
               <div class="m-1 mt-3 text-black-50">
                 <h3>type: {{beast.type}}</h3>
                 <h3>name: {{beast.name}}</h3>
@@ -53,9 +53,9 @@
         </div>
       </div>
       <div id="right" class="col p-4">
-        <div class="row p-4">
+        <div class="row p-4 justify-content-center">
           <div class="col justify-content-center">
-            <img alt="лик загрузить не удалось" class="border border-danger" src="img/sad-cat.jpg" style="height: 230px; width: 230px"/>
+            <img alt="лик загрузить не удалось" class="border border-danger" src="img/sad-cat.jpg" style="height: 300px; width: 300px"/>
           </div>
           <div class="col justify-content-center"><h2>{{user.name}}</h2>
             <h4>Количество зверей: {{user.count}}</h4>
@@ -81,11 +81,8 @@
     components: {MyCarousel},
     data: function () {
       return {
-        beasts: another.be,
-        otherBeasts: [
-          {type: 'dragon', name: 'GG', level: '14', hp: 100, isFighter: false, isAlive: true},
-          {type: 'dragon', name: 'Pika', level: '14', hp: 55, isFighter: true, isAlive: false}
-        ],
+        beasts: another.active,
+        otherBeasts: another.passive,
           user:{
               name: user_info.nick,
               level: user_info.level,
@@ -94,7 +91,7 @@
               img: user_info.icon,
               info: user_info.description,
               count: magic_data.count,
-              time: 2
+              time: 0
           },
         isActive1: 0
       }
