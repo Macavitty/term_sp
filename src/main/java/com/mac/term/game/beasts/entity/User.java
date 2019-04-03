@@ -1,17 +1,18 @@
 package com.mac.term.game.beasts.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -20,19 +21,18 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @FieldDefaults(level = PRIVATE)
 public class User implements Serializable {
     @Id
     String id;
 
-    @Column(name = "nickname", unique = true)
+    @Column(name = "nickname")
     String nick;
 
     String icon;
 
     String email;
-
-    String gender;
 
     Integer money;
 
@@ -40,12 +40,16 @@ public class User implements Serializable {
 
     Integer level;
 
-    @Column(name = "description")
-    String description;
-
-    @Column(name = "authVia")
+    @Column(name = "auth_via")
     String authVia;
 
     @Column(name = "last_visit")
     LocalDateTime lastVisit;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    Set<Creature> creatures = new HashSet<>();
 }

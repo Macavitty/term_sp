@@ -1,26 +1,32 @@
-create table usr(
-  id varchar(100) primary key,
-  password varchar(100) not null
-);
-
-create table spring_check(
-  check_id serial primary key,
-  x real not null,
-  y real not null,
-  r real not null,
-  shooter varchar(100) not null,
-  is_in_area boolean not null
-);
-
-
 -- utils --
 
-drop table spring_user;
-drop table spring_check;
 
-insert into spring_check (x, y, r, shooter, is_in_area) values (1, 2, 0.5, 'hashed', true);
-insert into spring_user (username, password) values ('a', 'b');
+-- make sure you`ve done this --
+insert into usr (id, nickname, icon, email, money, exp, level, auth_via, last_visit) values ('no', 'no', '654654', 'gvjhgv', 10, 0, 0, 'jgvj', '2019-12-12');
+
+-- location --
+insert into location (name, description) values ('аудитория 375', 'Lasciate ogni speranza, voi ch`entrate');
+insert into location (name, description) values ('foggy lands', 'there`s lots of fogg');
+insert into location (name, description) values ('some name', 'some description');
+
+-- creatures --
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'эвм', 1000, 48, 'no', 1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'эвм1', 1000, 48,'no', 2);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'эвм1000', 1000, 48,'no', 2);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'hal9000', 1000, 48,'no', 3);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'zoom', 1000, 48, 'no',1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'vampire', 1000, 48, 'no',1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'test', 1000, 48, 'no',1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'oooo', 1000, 48, 'no',1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'vi', 1000, 48, 'no',3);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'kill', 1000, 48, 'no',1);
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id) values (100, 1, 'sed', 1000, 48, 'no',3);
 
 
-select * from spring_check;
-select * from spring_user;
+
+
+drop table creature;
+drop table location;
+drop table usr;
+
+delete from usr where money = 42;
