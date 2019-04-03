@@ -31,10 +31,10 @@
         <div id="carouselIndicators1" class="carousel slide m-3" data-ride="carousel"
              style="height: 25vh; background-color: rgba(66, 205, 170, 0.5)">
           <ol class="carousel-indicators">
-            <li data-target="#carouselIndicators1"  v-for="(beast, index) in beasts" :class="{active: index===0}"></li>
+            <li data-target="#carouselIndicators1"  v-for="(beast, index) in showResults" :class="{active: index===0}"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item text-center" v-for="(beast, index) in beasts" :class="{active: index===0}">
+            <div class="carousel-item text-center" v-for="(beast, index) in showResults" :class="{active: index===0}">
               <div class="m-1 mt-3 text-black-50">
                 <h3>type: {{beast.type}}</h3>
                 <h3>name: {{beast.name}}</h3>
@@ -81,7 +81,7 @@
     components: {MyCarousel},
     data: function () {
       return {
-        beasts: beasts,
+        beasts: another.be,
         otherBeasts: [
           {type: 'dragon', name: 'GG', level: '14', hp: 100, isFighter: false, isAlive: true},
           {type: 'dragon', name: 'Pika', level: '14', hp: 55, isFighter: true, isAlive: false}
@@ -98,7 +98,12 @@
           },
         isActive1: 0
       }
-    }
+    },
+    computed: {
+      showResults: function () {
+        return this.beasts.slice().reverse()
+      }
+    },
   }
 </script>
 <style scoped>

@@ -3,6 +3,7 @@ package com.mac.term.game.beasts.controller;
 import com.mac.term.game.beasts.entity.Creature;
 import com.mac.term.game.beasts.entity.User;
 import com.mac.term.game.beasts.repository.CreatureRepo;
+import com.mac.term.game.beasts.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -21,10 +22,11 @@ import java.util.Set;
 public class StartController {
 
     private CreatureRepo creatureRepo;
+    private UserRepo userRepo;
 
     @Autowired
-    public StartController(CreatureRepo creatureRepo){
-        this.creatureRepo = creatureRepo;
+    public StartController(CreatureRepo creatureRepo, UserRepo userRepo ){
+        this.creatureRepo = creatureRepo; this.userRepo = userRepo;
     }
 
     @GetMapping
@@ -32,18 +34,14 @@ public class StartController {
         Map<Object, Object> m = new HashMap<>();
         Map<Object, Object> mm = new HashMap<>();
 
-        List<Creature> set = creatureRepo.findByOwner(user);
-        Map<Object, Object> b = new HashMap<>();
-        for (int i = 0; i < set.size(); i++){
-            b.put(i, set.get(i));
-        }
-
+        Map<Object, Object> lastMap = new HashMap<>();
+        lastMap.put("be", creatureRepo.findByOwner(user));
+        lastMap.put("size", creatureRepo.findByOwner(user).size());
         m.put("profile", user);
-        mm.put("user", user);
         m.put("count", user == null ? 0 : user.getCreatures() == null ? 0 : user.getCreatures().size());
         model.addAttribute("magic_data", m);
         model.addAttribute("user_info", user);
-        model.addAttribute("beasts", b);
+        model.addAttribute("another", lastMap);
         return "index";
     }
 }

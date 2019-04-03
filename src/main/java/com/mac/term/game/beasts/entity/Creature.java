@@ -1,5 +1,6 @@
 package com.mac.term.game.beasts.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.ColumnDefault;
@@ -40,10 +41,12 @@ public class Creature implements Serializable {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id")
     User owner;
 
+    @JsonIgnore
     @ManyToOne (optional=false)
     @JoinColumn(name = "location_id")
     Location location;
