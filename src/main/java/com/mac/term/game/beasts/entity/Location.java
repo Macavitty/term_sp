@@ -33,6 +33,6 @@ public class Location implements Serializable {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
     Set<Creature> creatures = new HashSet<>();
 }

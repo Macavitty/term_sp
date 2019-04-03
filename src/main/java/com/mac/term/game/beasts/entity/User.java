@@ -1,5 +1,6 @@
 package com.mac.term.game.beasts.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.Fetch;
@@ -49,7 +50,7 @@ public class User implements Serializable {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 
-
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     Set<Creature> creatures = new HashSet<>();
 }

@@ -18,7 +18,7 @@ public class BeastGenerator {
     }
 
     public Set<Creature> generateEnemies(int locationId, String userId, CreatureRepo creatureRepo, LocationRepo locationRepo) {
-//        List<Creature> fit = creatureRepo.findAllAndOwnerIdNotAndAndLocation(userId, locationRepo.findById(locationId));
+//        List<Creature> fit = creatureRepo.findAllAndOwnerIdNotAndLocation(userId, locationRepo.findById(locationId).orElse(null));
 //        Set<Creature> ret = new HashSet<>();
 //        for (int i = 0; i < 6; i++){
 //            ret.add(fit.get(rand(0, fit.size() - 1)));
@@ -32,7 +32,10 @@ public class BeastGenerator {
         User no = userRepo.findById("no").orElse(null);
         if (u != null && no != null) {
             List<Creature> fit = creatureRepo.findByOwner(no);
+            System.out.println("fit: " + fit.size());
+            if (fit.size() == 0) return new HashSet<>();
             Set<Creature> ret = new HashSet<>();
+
             for (int i = 0; i < 6; i++) {
                 Creature c = fit.get(rand(0, fit.size() - 1));
                 if (ret.add(c)) {
@@ -42,7 +45,8 @@ public class BeastGenerator {
             }
             return ret;
         } else {
-            return null;
+            System.out.println("user null");
+            return new HashSet<>();
         }
     }
 

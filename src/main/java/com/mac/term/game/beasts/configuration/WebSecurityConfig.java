@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Set;
 
@@ -51,11 +52,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 nu.setNick((String) map.get("name"));
                 nu.setIcon((String) map.get("picture"));
                 nu.setAuthVia("google");
+                nu.setCreatures(null);
                 return nu;
             });
             u.setLastVisit(LocalDateTime.now());
-//            Set<Creature> set = beastGenerator.generateForNewUser(id, creatureRepo, userRepo);
-//            u.setCreatures(set);
+            if (u.getCreatures() == null) {
+                userRepo.save(u);
+                Set<Creature> set = beastGenerator.generateForNewUser(id, creatureRepo, userRepo);
+                u.setCreatures(set);
+                System.out.println("dskjhgkucydfictfavygdvclaysdvcuysavuscdvcuvdycvkjdshqvourgfoucveroutv");
+                System.out.println(set.size());
+            }
             return userRepo.save(u);
         };
     }

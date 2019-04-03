@@ -34,14 +34,17 @@ public class Creature implements Serializable {
     Integer cost;
 
     Integer level;
+
+    String type;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id")
     User owner;
 
-    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @ManyToOne (optional=false)
     @JoinColumn(name = "location_id")
     Location location;
 }

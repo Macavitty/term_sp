@@ -1,12 +1,11 @@
 <template>
-    <div class="block">
-        <footer class="block">
-            <p>
-                <a href="http://en.ifmo.ru/en/"  target="_blank"> itmo
-<!--                    <img src="../../img/itmo.png" width="120" height="60" border="0"/>-->
-                </a>
-            </p>
-        </footer>
+    <div class="row justify-content-center">
+
+        <a href="http://en.ifmo.ru/en/" target="_blank">
+            <img title="Сюда лучше не ходить" src="img/itmo.png" style="background: #005cbf" width="120"
+                 height="60" border="0"/>
+        </a>
+
 
     </div>
 </template>
