@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/login**", "/static/**", "/error**").permitAll()
                 .anyRequest().authenticated()
-                .and()
+                .and().logout().logoutSuccessUrl("/").permitAll().and()
                 .csrf().disable();
     }
 

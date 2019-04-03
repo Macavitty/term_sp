@@ -23,7 +23,7 @@
       <!--<a class="dropdown-item" href = "/craft">Кузница</a>-->
       <a class="dropdown-item" href = "/gl">Глоссарий</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href = "/login">Выход</a>
+      <a class="dropdown-item" href = "/logout">Выход</a>
     </div>
   </div>
 </template>
