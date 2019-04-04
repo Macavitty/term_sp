@@ -6,19 +6,19 @@
             <div id="fight"
                  class="col-lg-8 col-11 p-4 mx-auto mt-2 border border-success text-center bg-light rounded justify-content-center align-items-center">
                 <div id="fightState" class="row pb-3">
-                    <div v-for="beast in beasts" v-if="beast.isFighter == true" class="col-lg-4 col-8  mb-lg-0 mb-1 mx-auto border border-success text-center rounded d-flex
+                    <div class="col-lg-4 col-8  mb-lg-0 mb-1 mx-auto border border-success text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
-                        {{beast.name}}
+                        Вы
                         <div class="progress mb-2" style="width: 100%">
-                            <div class="progress-bar bg-success" role="progressbar" :style="{width: beast.hp + '%'}"
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <div v-for="beast in enemyBeasts" v-if="beast.isFighter == true" class="col-lg-4 col-8 mt-lg-0 mt-1 mx-auto border border-danger text-center rounded d-flex
+                    <div class="col-lg-4 col-8 mt-lg-0 mt-1 mx-auto border border-danger text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
-                        {{beast.name}}
+                        Противник
                         <div class="progress mb-2" style="width: 100%">
-                            <div class="progress-bar bg-danger" role="progressbar" :style="{width: beast.hp + '%'}"
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
@@ -27,17 +27,20 @@
 
                     <table id="chat">
                         <tbody>
-                        <button v-if="isReady" class="btn rounded-circle btn-danger" @click="showMsgs">Готов!</button>
-                        <tr v-else v-for="msg in allMessages">
-                            {{msg.text}}
+                        <!--                        <button v-if="isReady" class="btn rounded-circle btn-danger" @click="showMsgs">Готов!</button>-->
+                        <tr v-if="isReady" v-for="msg in allMessages">
+                            {{msg.msg }}
+                        </tr>
+                        <tr>
+                            <button @click="showModalSave = true" class="btn btn-success">Конец</button>
                         </tr>
                         </tbody>
+
                     </table>
-                    <button @click="showModalSave = true" class="btn-info">test end 2</button>
                 </div>
             </div>
             <div id="beastsPanel" class="col">
-                <div v-for="beast in beasts" class="m-5 border border-danger bg-light text-center rounded d-flex
+                <div v-for="beast in enemies" class="m-5 border border-danger bg-light text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
                     <div>type: {{beast.type}}</div>
                     <div>name: {{beast.name}}</div>
@@ -100,10 +103,9 @@
                     {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true},
                     {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true}
                 ],
-                messages: [
-                    {text: 1, isGood: true}
+                allMessages: [
+                    {msg: null, int: -10}
                 ],
-                allMessages: null,
                 user: {name: 'Dany', level: 10, exp: 1400, money: 50},
                 isBattleForSave: false,
                 isSaveBeasts: false,
@@ -122,14 +124,15 @@
                         this.enemies = result.data.enemies
                         this.failedBeasts = this.enemies
                         this.beasts = result.data.my
+                        this.isReady = true
                         console.log(result)
                     }))
 
             },
-            showMsgs(){
+            showMsgs() {
                 this.isReady = false
 
-                for(let i  = 0; i< this.allMessages.length; i++){
+                for (let i = 0; i < this.allMessages.length; i++) {
 
                     setTimeout(function () {
                         allMessages[i].disable = true
@@ -144,26 +147,29 @@
                 }
             },
             saveBattle(e) {
-                this.showModalSave = false
-                this.showEnd(this.isWin)
-                let url = '/fightEnd/' + e
-                axios
-                    .get(url)
-                    .then(result => {
-                        console.log(result)
-                    })
+                location.href = '/map'
+                // this.showModalSave = false
+                // this.showEnd(this.isWin)
+                // let url = '/map'
+                // axios
+                //     .get(url)
+                //     .then(result => {
+                //         console.log(result)
+                //     })
             },
             saveBeasts(e) {
-                this.showModalEnd = false
-                let url = '/saveBeasts/' + e
-                axios
-                    .get(url)
-                    .then(result => {
-                        console.log(result)
-                    })
-            },
+                location.href = '/map'
+            }
+            //     this.showModalEnd = false
+            //     let url = '/saveBeasts/' + e
+            //     axios
+            //         .get(url)
+            //         .then(result => {
+            //             console.log(result)
+            //         })
+            // },
         },
-        created(){
+        created() {
             this.getMsg()
         }
     }

@@ -21,7 +21,7 @@
                  flex-column justify-content-center align-items-center">
                 <div><span class="text-black-50">type:</span><span> {{beast.type}}</span></div>
                 <div><span class="text-black-50">name:</span> {{beast.name}}</div>
-                <div><span class="text-black-50">lvl:</span> {{beast.lvl}}</div>
+                <div><span class="text-black-50">lvl:</span> {{beast.level}}</div>
             </div>
             </div>
             <div slot="footer" class="row p-2">
