@@ -6,6 +6,7 @@ import com.mac.term.game.beasts.entity.User;
 import com.mac.term.game.beasts.game_utils.BeastGenerator;
 import com.mac.term.game.beasts.repository.CreatureRepo;
 import com.mac.term.game.beasts.repository.LocationRepo;
+import com.mac.term.game.beasts.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,21 +26,23 @@ public class LocationController {
     private LocationRepo locationRepo;
     private CreatureRepo creatureRepo;
     private BeastGenerator beastGenerator;
+    private UserRepo userRepo;
 
     @Autowired
-    LocationController(LocationRepo locationRepo, BeastGenerator beastGenerator, CreatureRepo creatureRepo){
+    LocationController(LocationRepo locationRepo, BeastGenerator beastGenerator, CreatureRepo creatureRepo, UserRepo userRepo){
         this.locationRepo = locationRepo;
         this.beastGenerator = beastGenerator;
         this.creatureRepo = creatureRepo;
+        this.userRepo =userRepo;
     }
 
 
     @GetMapping("/{l}")
-    public Optional<Location> loc(@PathVariable("l") Integer l, @AuthenticationPrincipal User user){
+    public Map<Object, Object> loc(@PathVariable("l") Integer l, @AuthenticationPrincipal User user){
         Map<Object, Object> ret = new HashMap<>();
-        Set<Creature> enemies = beastGenerator.generateEnemies(l, user.getId(), creatureRepo,locationRepo );
+        Set<Creature> enemies = beastGenerator.generateForNewUser(user.getId(), creatureRepo, userRepo );
         ret.put("enemies", enemies);
-        return locationRepo.findById(l);
+        return ret;
     }
 
 

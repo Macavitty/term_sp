@@ -7,6 +7,8 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @Entity
@@ -15,7 +17,7 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
-public class ButtlePhrase {
+public class ButtlePhrase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;

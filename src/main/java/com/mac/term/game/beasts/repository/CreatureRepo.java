@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface CreatureRepo extends CrudRepository<Creature, Integer> {
-    List<Creature> findAll();
+    List<Creature> findAllByOrderByCost();
     List<Creature> findByOwner(User owner);
-//    List<Creature> findAllAndOwnerIdNotAndLocation(String ownerId, Location location);
+    List<Creature> findAllByOwnerIdIsNot(String ownerId);
 }

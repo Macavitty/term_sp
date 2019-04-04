@@ -10,21 +10,48 @@ insert into location (name, description) values ('foggy lands', 'there`s lots of
 insert into location (name, description) values ('some name', 'some description');
 
 -- creatures --
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'эвм', 1000, 48, 'no', 1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'эвм1', 1000, 48,'no', 2, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'эвм1000', 1000, 48,'no', 2, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'hal9000', 1000, 48,'no', 3, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'zoom', 1000, 48, 'no',1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'vampire', 1000, 48, 'no',1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'test', 1000, 48, 'no',1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'oooo', 1000, 48, 'no',1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'vi', 1000, 48, 'no',3, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'kill', 1000, 48, 'no',1, 'type');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type) values (100, 1, 'sed', 1000, 48, 'no',3, 'type');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, '1', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'э54вм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм1', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм651', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эrtвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'tэвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эuyrвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эв875м', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм00', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'tэвмth', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эtвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвtм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвertм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвw3м', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, '3wrэвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвwteм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвsaetrм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвlktfgdiorthoiм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
 
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdfgjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjsrgfrgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjgdfbffnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjsdfgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdsgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdjgfsafnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdsvjvsdgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjvdZdsvgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdawdxvgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkxcefvjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdfxbfgxdtgfnм', 1000, 48, 'no', 1, 'type', 'beast');
+
+insert into buttle_phrase (is_win, phrase) values ('t', 'vjjfdhv');
 
 drop table creature;
 drop table location;
 drop table usr;
+drop table buttle_phrase;
+
+
+
+
 
 delete from usr where money = 42;

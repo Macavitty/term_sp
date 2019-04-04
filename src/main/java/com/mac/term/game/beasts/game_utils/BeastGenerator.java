@@ -17,14 +17,14 @@ public class BeastGenerator {
     public BeastGenerator() {
     }
 
-    public Set<Creature> generateEnemies(int locationId, String userId, CreatureRepo creatureRepo, LocationRepo locationRepo) {
-//        List<Creature> fit = creatureRepo.findAllAndOwnerIdNotAndLocation(userId, locationRepo.findById(locationId).orElse(null));
-//        Set<Creature> ret = new HashSet<>();
-//        for (int i = 0; i < 6; i++){
-//            ret.add(fit.get(rand(0, fit.size() - 1)));
-//        }
-//        return ret;
-        return new HashSet<>();
+    public Set<Creature> generateEnemies(String userId, CreatureRepo creatureRepo) {
+        List<Creature> fit = creatureRepo.findAllByOwnerIdIsNot(userId);
+        Set<Creature> ret = new HashSet<>();
+        for (int i = 0; i < 6; i++){
+            ret.add(fit.get(rand(0, fit.size() - 1)));
+        }
+        return ret;
+//        return new HashSet<>();
     }
 
     public Set<Creature> generateForNewUser(String userId, CreatureRepo creatureRepo, UserRepo userRepo) {
@@ -52,6 +52,8 @@ public class BeastGenerator {
 
     private int rand(int low, int high) {
         Random r = new Random();
-        return r.nextInt(high - low) + low;
+        int t = high - low;
+        t  = t <= 0 ? 1 : t;
+        return r.nextInt(t) + low;
     }
 }

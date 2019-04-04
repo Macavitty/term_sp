@@ -38,6 +38,8 @@ public class Creature implements Serializable {
 
     String type;
 
+    String description;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 

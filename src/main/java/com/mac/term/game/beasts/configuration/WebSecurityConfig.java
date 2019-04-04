@@ -3,6 +3,7 @@ package com.mac.term.game.beasts.configuration;
 import com.mac.term.game.beasts.entity.Creature;
 import com.mac.term.game.beasts.entity.User;
 import com.mac.term.game.beasts.game_utils.BeastGenerator;
+import com.mac.term.game.beasts.game_utils.UserInfoControl;
 import com.mac.term.game.beasts.repository.CreatureRepo;
 import com.mac.term.game.beasts.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PrincipalExtractor principalExtractor(UserRepo userRepo, CreatureRepo creatureRepo) {
+        UserInfoControl userInfoControl = new UserInfoControl(userRepo);
         return map -> {
             String id = (String) map.get("sub");
             User u = userRepo.findById(id).orElseGet(() -> {
@@ -58,10 +60,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             u.setLastVisit(LocalDateTime.now());
             if (u.getCreatures() == null) {
                 userRepo.save(u);
+                userInfoControl.created(u.getId());
                 Set<Creature> set = beastGenerator.generateForNewUser(id, creatureRepo, userRepo);
                 u.setCreatures(set);
-                System.out.println("dskjhgkucydfictfavygdvclaysdvcuysavuscdvcuvdycvkjdshqvourgfoucveroutv");
-                System.out.println(set.size());
             }
             return userRepo.save(u);
         };

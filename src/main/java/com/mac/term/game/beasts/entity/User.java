@@ -41,6 +41,8 @@ public class User implements Serializable {
 
     Integer level;
 
+    String description;
+
     @Column(name = "auth_via")
     String authVia;
 
