@@ -1,5 +1,6 @@
 package com.mac.term.game.beasts.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -25,6 +26,7 @@ import static lombok.AccessLevel.PRIVATE;
 @EqualsAndHashCode
 @FieldDefaults(level = PRIVATE)
 public class User implements Serializable {
+
     @Id
     String id;
 
@@ -39,6 +41,9 @@ public class User implements Serializable {
 
     Integer exp;
 
+    @Column(name = "victory_number")
+    Integer victoryNumber;
+
     Integer level;
 
     String description;
@@ -46,8 +51,9 @@ public class User implements Serializable {
     @Column(name = "auth_via")
     String authVia;
 
-    @Column(name = "last_visit")
-    LocalDateTime lastVisit;
+    @Column(name = "registered")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime registered;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
@@ -55,4 +61,8 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     Set<Creature> creatures = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "gamer", fetch = FetchType.EAGER)
+    List<Battle> battles = new ArrayList<>();
 }

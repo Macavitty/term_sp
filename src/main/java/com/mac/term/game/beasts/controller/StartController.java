@@ -3,6 +3,8 @@ package com.mac.term.game.beasts.controller;
 import com.mac.term.game.beasts.entity.Creature;
 import com.mac.term.game.beasts.entity.Location;
 import com.mac.term.game.beasts.entity.User;
+import com.mac.term.game.beasts.game_utils.BandsStore;
+import com.mac.term.game.beasts.game_utils.BeastGenerator;
 import com.mac.term.game.beasts.repository.CreatureRepo;
 import com.mac.term.game.beasts.repository.LocationRepo;
 import com.mac.term.game.beasts.repository.UserRepo;
@@ -21,46 +23,44 @@ import java.util.*;
 public class StartController {
 
     private CreatureRepo creatureRepo;
-    private UserRepo userRepo;
     private LocationRepo locationRepo;
+    private BandsStore bandsStore;
+    private BeastGenerator beastGenerator;
 
     @Autowired
-    public StartController(CreatureRepo creatureRepo, UserRepo userRepo, LocationRepo locationRepo ){
-        this.creatureRepo = creatureRepo; this.userRepo = userRepo;
+    public StartController(CreatureRepo creatureRepo, LocationRepo locationRepo, BandsStore bandsStore, BeastGenerator beastGenerator){
+        this.creatureRepo = creatureRepo;
         this.locationRepo = locationRepo;
+        this.beastGenerator = beastGenerator;
+        this.bandsStore = bandsStore;
     }
 
     @GetMapping
     public String home(Model model, @AuthenticationPrincipal User user){
         Map<Object, Object> m = new HashMap<>();
-        Map<Object, Object> mm = new HashMap<>();
 
         Map<Object, Object> lastMap = new HashMap<>();
-        List<Creature> total = creatureRepo.findByOwner(user);
-        List<Creature> active = new ArrayList<>();
-        List<Creature> save = new ArrayList<>();
-        if (total.size() != 0) {
-            for (int i = 0; i < total.size() / 2 + 1; i++) {
-                active.add(total.get(i));
-            }
-            for (int i = total.size() / 2 + 1; i < total.size(); i++) {
-                save.add(total.get(i));
-            }
-        }
+
         List<Location> locations = locationRepo.findAll();
         List<Creature> allCreatures = creatureRepo.findAllByOrderByCost();
 
-
-
-        lastMap.put("active", active);
-        lastMap.put("passive", save);
+        if (user != null){
+            beastGenerator.sliceToActivePassive(user.getId());
+            System.out.println("USER IS NOT NULL, GOT ACTIVE");
+            lastMap.put("active", bandsStore.getActive(user.getId()));
+            lastMap.put("passive", bandsStore.getPassive(user.getId()));
+            m.put("count", user.getCreatures() == null ? 0 : user.getCreatures().size());
+        }
         lastMap.put("locs", locations);
         lastMap.put("all_creatures", allCreatures);
+
         m.put("profile", user);
-        m.put("count", user == null ? 0 : user.getCreatures() == null ? 0 : user.getCreatures().size());
+
         model.addAttribute("magic_data", m);
         model.addAttribute("user_info", user);
         model.addAttribute("another", lastMap);
         return "index";
     }
+
+
 }

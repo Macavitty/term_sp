@@ -6,7 +6,6 @@ import com.mac.term.game.beasts.game_utils.BeastGenerator;
 import com.mac.term.game.beasts.game_utils.UserInfoControl;
 import com.mac.term.game.beasts.repository.CreatureRepo;
 import com.mac.term.game.beasts.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
@@ -15,10 +14,16 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
 import java.util.Set;
 
 @Configuration
@@ -37,10 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-    private BeastGenerator beastGenerator = new BeastGenerator();
+//    private BeastGenerator beastGenerator = new BeastGenerator();
 
     @Bean
-    public PrincipalExtractor principalExtractor(UserRepo userRepo, CreatureRepo creatureRepo) {
+    public PrincipalExtractor principalExtractor(UserRepo userRepo, BeastGenerator beastGenerator) {
         UserInfoControl userInfoControl = new UserInfoControl(userRepo);
         return map -> {
             String id = (String) map.get("sub");
@@ -55,16 +60,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 nu.setIcon((String) map.get("picture"));
                 nu.setAuthVia("google");
                 nu.setCreatures(null);
+                nu.setDescription("Герой явился.");
+                nu.setRegistered(LocalDateTime.now());
                 return nu;
             });
-            u.setLastVisit(LocalDateTime.now());
-            if (u.getCreatures() == null) {
+            if (u.getCreatures() == null && ChronoUnit.SECONDS.between(LocalDateTime.now(), u.getRegistered()) < 50 ){
                 userRepo.save(u);
                 userInfoControl.created(u.getId());
-                Set<Creature> set = beastGenerator.generateForNewUser(id, creatureRepo, userRepo);
+                Set<Creature> set = beastGenerator.generateForNewUser(id);
                 u.setCreatures(set);
             }
             return userRepo.save(u);
         };
+
     }
 }

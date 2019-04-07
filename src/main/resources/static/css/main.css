@@ -34,6 +34,7 @@ html, body, #startPage, .container
 #string :hover
 {
   display: block;
+  color: #35d40d;
 }
 
 .my_table

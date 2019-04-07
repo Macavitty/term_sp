@@ -1,8 +1,8 @@
 <template>
     <div>
         <AppHeader></AppHeader>
-
-        <div style="background: url('http://www.youloveit.ru/uploads/gallery/main/7/youloveit_ru_oboi_winx_tainiks06.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>
+<!--        <div style="background: url('http://www.youloveit.ru/uploads/gallery/main/7/youloveit_ru_oboi_winx_tainiks06.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>-->
+        <div style="background: url('https://www.ubackground.com/_ph/85/950344899.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>
 
         <div id="canvas_area" align="center">
             <canvas id="map-canvas" title="Выбери землю, воин, дабы послать свой отряд в бой во имя закрытия сессии"
@@ -119,7 +119,6 @@ export default {
                 this.showSpinner = false
                 this.showModal = true
             }, 2500)
-            // if (location === 4) window.open()
         },
         what_location: function (e) {
             let l = 0
@@ -180,7 +179,7 @@ export default {
             background.src = 'https://i.pinimg.com/736x/1f/90/30/1f9030338b5c277b10d3e13a834a3f60--wave-design-print-design.jpg'
             background.onload = function () {
                 ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
-                ctx.fillStyle = 'rgba(30,65,254,0.49)'
+                ctx.fillStyle = 'rgba(46, 45, 45, 0.03)'
                 ctx.fillRect(0, 0, w, h)
                 ctx.fillStyle = 'white'
                 ctx.fillRect(0, h - h / 16, w, h)

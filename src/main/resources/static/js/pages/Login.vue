@@ -17,8 +17,8 @@
                     </div>
 
                 </div>
-                <div id="description" class="col-7 bg-light rounded text-black-50">
-                    <h5>Тут все очень классно, совсем без костылей, все работает, хороший курсач, надо принять</h5>
+                <div id="description" class="col-7 bg-light rounded  text-black-50">
+                    <h5>Тут все очень классно, совсем без костылей, все работает, нормальный курсач, надо принять</h5>
                 </div>
             </div>
         </div>

@@ -64,7 +64,7 @@
             </div>
         </DefaultModal>
         <DefaultModal v-if="showModalEnd" @close="showModalEnd = false">
-            <div slot="header"><h3>Забрать проигравших?</h3></div>
+            <div slot="header"><h3>Победа! <br/> Забрать проигравших?</h3></div>
             <div slot="body">
                 <button class="btn btn-success" @click="saveBeasts('yes')">Да</button>
                 <button class="btn btn-success" @click="saveBeasts('no')">Нет</button>
@@ -146,8 +146,8 @@
                     this.showModalEnd = true
                 }
             },
-            saveBattle(e) {
-                location.href = '/map'
+            // saveBattle(e) {
+            //     location.href = '/map'
                 // this.showModalSave = false
                 // this.showEnd(this.isWin)
                 // let url = '/map'
@@ -156,18 +156,17 @@
                 //     .then(result => {
                 //         console.log(result)
                 //     })
-            },
+            // },
             saveBeasts(e) {
                 location.href = '/map'
-            }
-            //     this.showModalEnd = false
-            //     let url = '/saveBeasts/' + e
-            //     axios
-            //         .get(url)
-            //         .then(result => {
-            //             console.log(result)
-            //         })
-            // },
+                this.showModalEnd = false
+                let url = '/saveBeasts/' + e
+                axios
+                    .get(url)
+                    .then(result => {
+                        console.log(result)
+                    })
+            },
         },
         created() {
             this.getMsg()

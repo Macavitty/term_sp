@@ -1,57 +1,181 @@
 -- utils --
 
-
--- make sure you`ve done this --
-insert into usr (id, nickname, icon, email, money, exp, level, auth_via, last_visit) values ('no', 'no', '654654', 'gvjhgv', 10, 0, 0, 'jgvj', '2019-12-12');
-
--- location --
-insert into location (name, description) values ('аудитория 375', 'Lasciate ogni speranza, voi ch`entrate');
-insert into location (name, description) values ('foggy lands', 'there`s lots of fogg');
-insert into location (name, description) values ('some name', 'some description');
-
--- creatures --
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, '1', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'э54вм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм1', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм651', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эrtвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'tэвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эuyrвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эв875м', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм00', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'tэвмth', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эtвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвtм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвertм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвw3м', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, '3wrэвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвwteм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвsaetrм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвlktfgdiorthoiм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdfgjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjsrgfrgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjgdfbffnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjsdfgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdsgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdjgfsafnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkdsvjvsdgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjvdZdsvgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdawdxvgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkxcefvjgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values (100, 1, 'эвkjdfxbfgxdtgfnм', 1000, 48, 'no', 1, 'type', 'beast');
-
-insert into buttle_phrase (is_win, phrase) values ('t', 'vjjfdhv');
-
 drop table creature;
 drop table location;
+drop table battle;
 drop table usr;
+
 drop table buttle_phrase;
 
+delete from usr  money = 42;
+
+
+-- make sure you`ve done this --
+insert into usr (id, nickname, icon, email, money, exp, level, auth_via, registered) values ('no', 'no', 'no', 'no', 10, 0, 0, 'no', '2019-12-12');
+
+-- locations --
+INSERT INTO location (name, description) VALUES
+('Гнилой лес', 'Мрачное место с ужасными ужасами. Где-то здесь бродит несданный курсач по ПИПу'),
+('Аудитория 375', 'Lasciate ogni speranza, voi ch`entrate. Ни за что, запомните, ' ||
+ 'ни за что не качайтесь в этих местах на стуле и упаси вас Один установить стороннее ПО. Существ много, кофе тоже, скучно не будет.'),
+('Подбугорки', 'Находятся между предгорьями Верхневого королевтва и Кривыми равнинами. По-настоящему страшных чудовищ нет, но образованные люди заходить бояться.' ||
+ 'Поговаривают, пару граммар-наци здесь даже умерли.'),
+('Верхнее королевство', 'Самое крупное государтво. Занимает доминирующую позицию и все известные возвышенности. Обитель самых богатых и наглых существ.'),
+('Нижнее королевство', 'Занимает позицию..кхм.. не доминирующую. Находится прямо по среди болота. ' ||
+ 'Можно найти много интересных и иногда полезных веществ, но следует соблюдать осторожность, так как по всюду Оппозиционеры и Простуда. '),
+('Скучная пустыня', 'Сюда до сих пор не провели интернет и вряд ли это когда-нибудь сделают. Пустыня полна новостей и русских сериалов, иногда здесь проводятся лекции по теорверу' );
+
+
+-- creatures --
+insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values
+(45, 12, 'Очень сверепый дракон', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Одуванчик огнеупорный', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Эль кукуй', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ырка', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(45, 12, 'Очень сверепый дракон Первый', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП Первый', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Одуванчик огнеупорный Первый', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Эль кукуй Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ырка Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень Первая', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия Первая', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник Первый', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая Первый', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт Первый', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро Первое', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник Первый', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(45, 12, 'Очень сверепый дракон из Ада', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП из Ада', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Одуванчик огнеупорный из Ада', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Эль кукуй из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ырка из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень из Ада', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия из Ада', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник из Ада', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая из Ада', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро из Ада', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник из Ада', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач из Ада', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(45, 12, 'Очень сверепый дракон 3', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП 3', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Одуванчик огнеупорный 3', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Эль кукуй 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ырка 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень 3', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия 3', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник 3', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая 3', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро 3', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник 3', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач 3', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(45, 12, 'Очень сверепый дракон Уставший', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП Уставший', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Эль кукуй Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Одуванчик огнеупорный Уставший', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Ырка Уставшая', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень Уставшая', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия Уставшая', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник Уставший', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая Уставшая', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт Уставший', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро Уставшее', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник Уставший', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач Уставший', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(45, 12, 'Очень сверепый дракон XXXL', 1000, 48, 'no', 1, 'type', 'Рептилия'),
+(100, 1, 'ПИП XXXL', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Одуванчик огнеупорный XXXL', 1000, 48, 'no', 1, 'type', 'Растениеподобные'),
+(100, 1, 'Эль кукуй XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Пожиратель XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'птица Рух XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ши XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Аспид XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Ырка XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Адский борщ XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Плесень XXXL', 1000, 48, 'no', 1, 'type', 'Не известно'),
+(100, 1, 'Голем XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Сессия XXXL', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Понедельник XXXL', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Базовая XXXL', 1000, 48, 'no', 1, 'type', 'ЭВМ'),
+(100, 1, 'Злобный пельмень XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Копирайт XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Утро XXXL', 1000, 48, 'no', 1, 'type', 'beast'),
+(100, 1, 'Понедельник XXXL', 1000, 48, 'no', 1, 'type', 'Ужасающие'),
+(100, 1, 'Курсач XXXL', 1000, 48, 'no', 1, 'type', 'Неизданное'),
+(100, 1, 'Роскомнадзор', 1000, 48, 'no', 1, 'type', 'Легендарное');
+
+-- phrase --
+insert into buttle_phrase (is_win, phrase) values ('f', 'Вас покусали комары'),
+('t', 'На противника напал пчелиный рой'),
+('f', 'Из ближайших кустов на вас прыгнул рояль'),
+('t', 'Мимо проходящий табор забрал все золотые зубы противника'),
+('t', 'Противника покусали комары'),
+('f', 'На вас напал пчелиный рой'),
+('t', 'Из ближайших кустов на противника прыгнул рояль'),
+('f', 'Вы кастуете заклинание, оно рекошетит от кольчуги противника и попадает в вас'),
+('f', 'Мимо проходящий медведь забрал ваше сердечко'),
+('t', 'Вы случайно вспомнили механику из курса второго семестра и ловко опрокинули противника'),
+('t', 'Ничего особенного - вам улыбнулась удача'),
+('t', 'Противник плотно позавтракал, поэтому промазал, но всё-равно не расслабляйтесь'),
+('t', 'Хороший удар!'),
+('t', 'Противник провалился под лёд, он очень зол'),
+('t', 'Противник вспомнил, что ему завтра к восьми на английский и убежал спать'),
+('f', 'Существо укусило вас за лодышку'),
+('f', 'Вы слишком плотно позавтракали и выронили меч'),
+('f', 'Никто не знает, что произошло, но яркая вспышка ослепила вас на 0.42 секунды'),
+('t', 'Противник кастует заклинание, оно рекошетит от вашей сияющей улыбки и попадает в противника');
+
+
+-- select --
+select id, money, exp, victory_number, level, description, registered from usr;
 
 
 
 
-delete from usr where money = 42;
+

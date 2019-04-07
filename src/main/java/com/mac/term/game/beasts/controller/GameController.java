@@ -1,16 +1,9 @@
 package com.mac.term.game.beasts.controller;
 
 
-import com.mac.term.game.beasts.entity.ButtlePhrase;
 import com.mac.term.game.beasts.entity.Creature;
-import com.mac.term.game.beasts.entity.Location;
 import com.mac.term.game.beasts.entity.User;
-import com.mac.term.game.beasts.game_utils.BeastGenerator;
-import com.mac.term.game.beasts.game_utils.Strike;
-import com.mac.term.game.beasts.game_utils.UserInfoControl;
-import com.mac.term.game.beasts.repository.ButtlePhraseRepo;
-import com.mac.term.game.beasts.repository.CreatureRepo;
-import com.mac.term.game.beasts.repository.LocationRepo;
+import com.mac.term.game.beasts.game_utils.*;
 import com.mac.term.game.beasts.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,42 +12,50 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("fight")
 public class GameController {
-    private LocationRepo locationRepo;
-    private CreatureRepo creatureRepo;
-    private BeastGenerator beastGenerator;
-    private ButtlePhraseRepo phraseRepo;
+
     private UserRepo userRepo;
     private UserInfoControl userInfoControl;
-
-    Strike strike = new Strike();
+    private BandsStore bandsStore;
+    private BeastGenerator beastGenerator;
+    private BattleSteps battleSteps;
+    private UserCreaturesControl userCreaturesControl;
 
     @Autowired
-    GameController(LocationRepo locationRepo, BeastGenerator beastGenerator, CreatureRepo creatureRepo, ButtlePhraseRepo phraseRepo, UserRepo userRepo, UserInfoControl userInfoControl){
-        this.locationRepo = locationRepo;
+    public void setBandsStore(BandsStore bandsStore){
+        this.bandsStore = bandsStore;
+    }
+
+    @Autowired
+    public void setBattleSteps(BattleSteps battleSteps) {
+        this.battleSteps = battleSteps;
+    }
+
+    @Autowired
+    public void setUserCreaturesControl(UserCreaturesControl userCreaturesControl) {
+        this.userCreaturesControl = userCreaturesControl;
+    }
+
+    @Autowired
+    GameController(BeastGenerator beastGenerator, UserRepo userRepo, UserInfoControl userInfoControl){
         this.beastGenerator = beastGenerator;
-        this.creatureRepo = creatureRepo;
-        this.phraseRepo = phraseRepo;
         this.userRepo = userRepo;
         this.userInfoControl = userInfoControl;
     }
 
-    @GetMapping("/{fight}")
-    public Map<Object, Object> loc(@AuthenticationPrincipal User user){
+    @GetMapping("/{fight}/{fight}")
+    public Map<Object, Object> fight(@PathVariable("fight") String fight, @AuthenticationPrincipal User user){
         Map<Object, Object> ret = new HashMap<>();
-        Set<Creature> enemies = beastGenerator.generateEnemies(user.getId(), creatureRepo);
-        List<Strike> strikes = new ArrayList<>();
-        int i = 100*enemies.size();
-        while (i > 0){
-            Strike strike = generateStrike();
-            strikes.add(strike);
-            i -= Math.abs(strike.damage);
-        }
+        Set<Creature> enemies = bandsStore.getEnemies(user.getId());
+        enemies = enemies.size() == 0 ? beastGenerator.generateEnemies(user.getId()) : enemies;
+        List<Strike> strikes = battleSteps.letTheBattleBe(enemies.size());
         ret.put("msgs", strikes);
         ret.put("enemies", enemies);
         return ret;
@@ -65,30 +66,15 @@ public class GameController {
         int curMoney = user.getMoney();
         user.setMoney(curMoney - cost);
         userRepo.save(user);
-        userInfoControl.moneyChangedTo(curMoney - cost, user);
+        userInfoControl.moneyChangedTo(curMoney - cost, user.getId());
+        userInfoControl.updateInfoAfterVictory(user.getId());
+    }
+
+    @GetMapping("/{saveBeasts}")
+    public void saveNewCreatures(@PathVariable("saveBeasts") String saveBeasts, @AuthenticationPrincipal User user){
+        userCreaturesControl.takeEnemies(user.getId());
+        userInfoControl.updateInfoAfterVictory(user.getId());
     }
 
 
-    private int rand(int low, int high) {
-        Random r = new Random();
-        int t = high - low;
-        t  = t <= 0 ? 1 : t;
-        return r.nextInt(t) + low;
-    }
-
-    private Strike generateStrike(){
-        int n = rand(1, (int)phraseRepo.count());
-        ButtlePhrase p = phraseRepo.findById(n).orElseGet(() -> {
-            ButtlePhrase np = new ButtlePhrase();
-           np.setPhrase("Произошло что-то непонятное, но мы то знаем, чот кто-то потерял очки здоровья" );
-           np.setIs_win(true);
-            return np;
-        });
-        phraseRepo.save(p);
-        Strike s = new Strike();
-        s.msg = p.getPhrase().equals("") ? "Произошло что-то непонятное, но мы то знаем, чот кто-то потерял очки здоровья" : p.getPhrase();
-        s.damage = rand(1, 20);
-        s.damage =  p.getIs_win() ? s.damage : -s.damage;
-        return s;
-    }
 }

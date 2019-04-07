@@ -1,7 +1,9 @@
 <template>
+<!--  <div style="height: 100%; background: url('https://www.ubackground.com/_ph/85/950344899.jpg');">-->
   <div style="height: 100%; background: url('http://www.youloveit.ru/uploads/posts/2016-12/1481811936_youloveit_ru_oboi_winx_tainiks01.jpg')">
     <AppHeader></AppHeader>
-    <div class="row">
+    <div class="row" >
+<!--    <div class="row" style= "height: 100%; background: rgba(253,168,211,0.54)">-->
       <div id="left" class="col-12 pt-4 pl-5 col-lg-6">
         <h2 class="text-center text-info">Активные существа</h2>
         <div id="carouselIndicators0" class="carousel slide m-3" data-ride="carousel"
@@ -29,7 +31,7 @@
         </div>
         <h2 class="text-center text-info">Существа в запасе</h2>
         <div id="carouselIndicators1" class="carousel slide m-3" data-ride="carousel"
-             style="height: 25vh; background-color: rgba(66, 205, 170, 0.5)">
+             style="height: 25vh; background-color: rgba(66,205,170,0.54)">
           <ol class="carousel-indicators">
             <li data-target="#carouselIndicators1"  v-for="(beast, index) in otherBeasts" :class="{active: index===0}"></li>
           </ol>
@@ -55,15 +57,16 @@
       <div id="right" class="col p-4">
         <div class="row p-4 justify-content-center">
           <div class="col justify-content-center">
-            <img alt="лик загрузить не удалось" class="border border-danger" src="img/sad-cat.jpg" style="height: 300px; width: 300px"/>
+              <img v-bind:src="user.img" width="200" height="200" alt="Лик загрузить не удалось"  />
           </div>
           <div class="col justify-content-center"><h2>{{user.name}}</h2>
-            <h4>Количество зверей: {{user.count}}</h4>
+            <h5 class="text-black-50 p-4 text-center font-italic">{{user.info}}</h5>
+            <h4>Количество зверей: {{beasts.length + otherBeasts.length}}</h4>
             <h4>Дни в игре: {{user.time}}</h4>
           </div>
         </div>
         <div>
-          <h5 class="text-black-50 p-4 text-center font-italic">{{user.info}}</h5>
+<!--          <h5 class="text-black-50 p-4 text-center font-italic">{{user.info}}</h5>-->
         </div>
       </div>
     </div>
