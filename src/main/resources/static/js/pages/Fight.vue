@@ -28,21 +28,23 @@
                     <table id="chat">
                         <tbody>
                         <tr v-for="(msg, index) in allMessages" v-if="index<=i"
-                            :class="[(msg.int < 0) ? 'text-danger' : 'text-success']">
+                            :class="[(msg.damage < 0) ? 'text-danger' : 'text-success']">
                             {{msg.msg}}
                         </tr>
                         <tr>
                             <!--<button @click="showModalSave = true" class="btn btn-success">Конец</button>-->
-                            <button @click="illusionBattle" class="btn btn-danger">Аттака</button>
 
                         </tr>
                         </tbody>
 
                     </table>
+
                 </div>
+                <button @click="illusionBattle" class="btn btn-danger bottom">Аттака</button>
+
             </div>
             <div id="beastsPanel" class="col">
-                <div v-for="beast in enemyBeasts" class="m-5 border border-danger bg-light text-center rounded d-flex
+                <div v-for="beast in beasts" class="m-5 border border-danger bg-light text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
                     <div>type: {{beast.type}}</div>
                     <div>name: {{beast.name}}</div>
@@ -87,6 +89,7 @@
 <script>
     import DefaultModal from 'js/components/DefaultModal.vue'
     import axios from 'axios'
+    import Header from "../components/Header";
 
     export default {
         name: 'Fight',
@@ -94,24 +97,24 @@
         data: function () {
             return {
                 beasts: [
-                    {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true},
-                    {type: 'dragon', name: 'Smaug', level: '14', hp: 100, isFighter: false, isAlive: false}
+                    {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isAlive: true},
+                    {type: 'dragon', name: 'Smaug', level: '14', hp: 100, isAlive: false}
                 ],
-                enemyBeasts: [
-                    {type: 'dragon', name: 'GG', level: '14', hp: 100, isFighter: false, isAlive: true},
-                    {type: 'dragon', name: 'Pika', level: '14', hp: 55, isFighter: true, isAlive: false}
+                enemies: [
+                    {type: 'dragon', name: 'GG', level: '14', hp: 100, isAlive: true},
+                    {type: 'dragon', name: 'Pika', level: '14', hp: 55, isAlive: false}
                 ],
                 failedBeasts: [
-                    {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true},
-                    {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true},
-                    {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true}
+                    {type: 'dragon', name: 'Drogo', level: '14', isAlive: true, isSaved: false},
+                    {type: 'dragon', name: 'Drogo', level: '14', isAlive: true, isSaved: false},
+                    {type: 'dragon', name: 'Drogo', level: '14', isAlive: true, isSaved: false}
                 ],
                 allMessages: [
-                    {msg: 'dfghjkl1', int: -10},
-                    {msg: 'dfghjkl2', int: 10},
-                    {msg: 'dfghjkl3', int: -30},
-                    {msg: 'dfghjkl4', int: 40},
-                    {msg: 'dfghjkl5', int: 50}
+                    {msg: 'dfghjkl1', damage: -10},
+                    {msg: 'dfghjkl2', damage: 10},
+                    {msg: 'dfghjkl3', damage: -30},
+                    {msg: 'dfghjkl4', damage: 40},
+                    {msg: 'dfghjkl5', damage: 50}
                 ],
                 user: {name: 'Dany', level: 10, exp: 1400, money: 50},
                 userHP: 100,
@@ -139,18 +142,27 @@
             illusionBattle() {
                 if (this.i < this.allMessages.length) {
                     this.i++
-                    this.recountHP(this.allMessages[this.i].int)
+                    this.recountHP(this.allMessages[this.i].damage)
                     console.log("recount hp")
+                    if (this.enemyHP == 0 | this.userHP == 0) {
+                        if (this.enemyHP > 0)
+                            this.isWin = false
+                        else
+                            this.isWin = true
+                        this.attackDisable = true
+                        this.updateInfo()
+                        setTimeout(()=>{
+                            this.showModalSave = true
+                        }, 500)
+                    }
                 }
-                if (this.i == this.allMessages.length) {
-                    if (this.enemyHP > 0)
-                        this.isWin = false
-                    else
-                        this.isWin = true
-                    this.attackDisable = true
-                    setTimeout(() =>
-                        this.showModalSave = true, 1500)
-                }
+            },
+            updateInfo() {
+                axios
+                    .get('/user')
+                    .then(result => {
+                        this.header.user = result.data.user
+                    })
             },
             saveBattle() {
                 this.showModalSave = false
@@ -159,7 +171,6 @@
                     this.showModalEnd = true
                 else
                     location.href = '/map'
-
                 let url = '/map'
                 // axios
                 //     .get(url)
@@ -180,7 +191,7 @@
             },
             getData() {
                 axios
-                    .get('/fight/fight')
+                    .get('/fight/start')
                     .then((result => {
                         this.allMessages = result.data.msgs
                         this.enemies = result.data.enemies
@@ -189,12 +200,12 @@
                         this.isReady = true
                         console.log(result)
                     }))
-
             }
+
         },
-        created() {
-            this.getData()
-        }
+        // created() {
+        //     this.getData()
+        // }
     }
 </script>
 
