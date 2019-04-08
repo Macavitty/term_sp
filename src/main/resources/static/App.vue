@@ -12,6 +12,8 @@
     import VueAxios from 'vue-axios'
 
     import BootstrapVue from 'bootstrap-vue'
+    // import VueWebsocket from "vue-websocket";
+    // Vue.use(VueWebsocket);
 
     Vue.use(BootstrapVue)
     Vue.use(VueAxios, axios)
