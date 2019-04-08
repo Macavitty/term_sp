@@ -53,7 +53,7 @@ public class GameController {
     }
 
     @GetMapping("/{start}")
-    public Map<Object, Object> fight(@PathVariable("start") String start, @AuthenticationPrincipal User user) {
+    public Map<Object, Object> fight(@PathVariable("start") String start, @AuthenticationPrincipal User user, Model model) {
         Map<Object, Object> ret = new HashMap<>();
         Set<Creature> enemies = bandsStore.getEnemies(user.getId());
         enemies = enemies.size() == 0 ? beastGenerator.generateEnemies(user.getId()) : enemies;

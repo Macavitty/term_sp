@@ -144,22 +144,18 @@
                     if (this.enemyHP == 0 | this.userHP == 0) {
                         if (this.enemyHP > 0)
                             this.isWin = false
-                        else
+                        else {
                             this.isWin = true
+                        }
                         this.attackDisable = true
-                        this.updateInfo()
                         setTimeout(()=>{
                             this.showModalSave = true
                         }, 500)
                     }
                 }
-            },
-            updateInfo() {
                 axios
                     .get('/user/updateUser')
-                    .then(result => {
-                        this.header.user = result.data.user
-                    })
+
             },
             saveBattle() {
                 this.showModalSave = false
