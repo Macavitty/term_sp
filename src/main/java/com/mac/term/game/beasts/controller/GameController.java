@@ -4,18 +4,17 @@ package com.mac.term.game.beasts.controller;
 import com.mac.term.game.beasts.entity.Creature;
 import com.mac.term.game.beasts.entity.User;
 import com.mac.term.game.beasts.game_utils.*;
+import com.mac.term.game.beasts.repository.BattleRepo;
 import com.mac.term.game.beasts.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("fight")
@@ -27,9 +26,11 @@ public class GameController {
     private BeastGenerator beastGenerator;
     private BattleSteps battleSteps;
     private UserCreaturesControl userCreaturesControl;
+    private BattleRepo battleRepo;
+    private List<Strike> strikes = new ArrayList<>();
 
     @Autowired
-    public void setBandsStore(BandsStore bandsStore){
+    public void setBandsStore(BandsStore bandsStore) {
         this.bandsStore = bandsStore;
     }
 
@@ -44,37 +45,49 @@ public class GameController {
     }
 
     @Autowired
-    GameController(BeastGenerator beastGenerator, UserRepo userRepo, UserInfoControl userInfoControl){
+    GameController(BeastGenerator beastGenerator, UserRepo userRepo, UserInfoControl userInfoControl, BattleRepo battleRepo) {
         this.beastGenerator = beastGenerator;
         this.userRepo = userRepo;
         this.userInfoControl = userInfoControl;
+        this.battleRepo = battleRepo;
     }
 
-    @GetMapping("/{fight}/{fight}")
-    public Map<Object, Object> fight(@PathVariable("fight") String fight, @AuthenticationPrincipal User user){
+    @GetMapping("/{start}")
+    public Map<Object, Object> fight(@PathVariable("start") String start, @AuthenticationPrincipal User user) {
         Map<Object, Object> ret = new HashMap<>();
         Set<Creature> enemies = bandsStore.getEnemies(user.getId());
         enemies = enemies.size() == 0 ? beastGenerator.generateEnemies(user.getId()) : enemies;
-        List<Strike> strikes = battleSteps.letTheBattleBe(enemies.size());
+        strikes = battleSteps.letTheBattleBe(enemies.size());
+        System.out.println(strikes);
         ret.put("msgs", strikes);
         ret.put("enemies", enemies);
         return ret;
     }
 
     @GetMapping("/{pay}/{cost}")
-    public void pay(@PathVariable("pay") String pa, @PathVariable("cost") Integer cost, @AuthenticationPrincipal User user){
+    public boolean pay(@PathVariable("pay") String pa, @PathVariable("cost") Integer cost, @AuthenticationPrincipal User user, Model model) {
         int curMoney = user.getMoney();
-        user.setMoney(curMoney - cost);
+        if (curMoney - cost >= 0)
+            user.setMoney(curMoney - cost);
         userRepo.save(user);
         userInfoControl.moneyChangedTo(curMoney - cost, user.getId());
         userInfoControl.updateInfoAfterVictory(user.getId());
+        System.out.println("pay " + cost);
+        model.addAttribute("user_info", user);
+        return (curMoney - cost >= 0);
     }
 
-    @GetMapping("/{saveBeasts}")
-    public void saveNewCreatures(@PathVariable("saveBeasts") String saveBeasts, @AuthenticationPrincipal User user){
+    @GetMapping("/saveBeasts")
+    public void saveNewCreatures(@AuthenticationPrincipal User user) {
         userCreaturesControl.takeEnemies(user.getId());
         userInfoControl.updateInfoAfterVictory(user.getId());
+        System.out.println("save");
     }
 
-
+    @GetMapping("/saveSteps")
+    public void saveSteps(@AuthenticationPrincipal User user) {
+        userInfoControl.saveSteps(user, strikes, battleRepo);
+        userInfoControl.updateInfoAfterVictory(user.getId());
+        System.out.println("save");
+    }
 }

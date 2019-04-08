@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 User nu = new User();
                 nu.setId(id);
                 nu.setEmail((String) map.get("email"));
-                nu.setMoney(42);
+                nu.setMoney(4200);
                 nu.setExp(0);
                 nu.setLevel(0);
                 nu.setNick((String) map.get("name"));
@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 nu.setAuthVia("google");
                 nu.setCreatures(null);
                 nu.setDescription("Герой явился.");
+                nu.setVictoryNumber(0);
                 nu.setRegistered(LocalDateTime.now());
                 return nu;
             });

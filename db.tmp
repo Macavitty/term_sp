@@ -25,7 +25,6 @@ INSERT INTO location (name, description) VALUES
  'Можно найти много интересных и иногда полезных веществ, но следует соблюдать осторожность, так как по всюду Оппозиционеры и Простуда. '),
 ('Скучная пустыня', 'Сюда до сих пор не провели интернет и вряд ли это когда-нибудь сделают. Пустыня полна новостей и русских сериалов, иногда здесь проводятся лекции по теорверу' );
 
-
 -- creatures --
 insert into creature (integration_lvl, magic_lvl, name, cost, level, owner_id,location_id, type, description) values
 (45, 12, 'Очень сверепый дракон', 1000, 48, 'no', 1, 'type', 'Рептилия'),
@@ -176,6 +175,6 @@ insert into buttle_phrase (is_win, phrase) values ('f', 'Вас покусали
 select id, money, exp, victory_number, level, description, registered from usr;
 
 
-
-
-
+UPDATE usr
+SET money = 1000 WHERE
+ id = '109120401506668712471';

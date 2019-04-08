@@ -7,7 +7,7 @@
     </div>
 
 
-    <div id="rightPanel" class="col-lg-3 col-6 text-black-50 d-flex flex-column justify-content-center align-items-lg-start">
+    <div id="rightPanel" :key="updated" class="col-lg-3 col-6 text-black-50 d-flex flex-column justify-content-center align-items-lg-start">
       <div>
         <h4>
 
@@ -40,7 +40,8 @@ export default {
         exp: user_info.exp,
         money: user_info.money,
       icon: user_info.icon
-      }
+      },
+      updated: 0
     }
   }
 }

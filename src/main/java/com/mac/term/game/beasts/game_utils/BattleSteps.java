@@ -26,11 +26,30 @@ public class BattleSteps {
 
     public List<Strike> letTheBattleBe(int enemies){
         List<Strike> strikes = new ArrayList<>();
-        int i = 100*enemies;
-        while (i > 0){
-            Strike strike = generateStrike();
-            strikes.add(strike);
-            i -= Math.abs(strike.damage);
+        int user = 100, enemy = 100;
+        while (user > 0  && enemy > 0){
+            Strike s = generateStrike();
+            int d = s.damage;
+            System.out.println(d);
+            if (d > 0) {
+                enemy -= d;
+                if (enemy < 0){
+                    enemy += d;
+                    s.damage = enemy;
+                    System.out.println("new enemy d " + -enemy);
+                    enemy = 0;
+                }
+            }
+            else {
+                user += d;
+                if (user < 0){
+                    user -=d;
+                    s.damage = -user;
+                    System.out.println("new user d " + user);
+                    user = 0;
+                }
+            }
+            strikes.add(s);
         }
         return strikes;
     }
@@ -46,7 +65,7 @@ public class BattleSteps {
         phraseRepo.save(p);
         Strike s = new Strike();
         s.msg = p.getPhrase().equals("") ? "Произошло что-то непонятное, но мы то знаем, чот кто-то потерял очки здоровья" : p.getPhrase();
-        s.damage = randomizer.rand(1, 40);
+        s.damage = randomizer.rand(20, 40);
         s.damage = p.getIs_win() ? s.damage : -s.damage;
         return s;
     }

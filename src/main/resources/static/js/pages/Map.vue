@@ -1,7 +1,7 @@
 <template>
     <div>
         <AppHeader></AppHeader>
-<!--        <div style="background: url('http://www.youloveit.ru/uploads/gallery/main/7/youloveit_ru_oboi_winx_tainiks06.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>-->
+        <!--        <div style="background: url('http://www.youloveit.ru/uploads/gallery/main/7/youloveit_ru_oboi_winx_tainiks06.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>-->
         <div style="background: url('https://www.ubackground.com/_ph/85/950344899.jpg') no-repeat;background-size: 100%; height: 100vh; width: 100vw; z-index: -1; position: fixed"></div>
 
         <div id="canvas_area" align="center">
@@ -54,7 +54,6 @@
 import DefaultModal from 'js/components/DefaultModal.vue'
 import axios from 'axios'
 import {RouteRecord as redirect} from 'vue-router'
-
 export default {
     name: 'Map',
     components: {DefaultModal},
@@ -79,10 +78,16 @@ export default {
                 showModal = false
             } else this.fight()
         },
-        pay: function () {
+        pay () {
             this.showModal = false
+            console.log("pay")
             axios
                 .get('/fight/pay/' + this.cost)
+                .then(result=>{
+                    if(!result.data)
+                        alert('Вы слишком нищий, сражайтесь!')
+                })
+            this.AppHeader.data().updated++
         },
         fight: function () {
             location.href = '/fight'
@@ -375,5 +380,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

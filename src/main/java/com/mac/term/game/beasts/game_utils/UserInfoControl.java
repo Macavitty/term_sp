@@ -1,13 +1,17 @@
 package com.mac.term.game.beasts.game_utils;
 
+import com.mac.term.game.beasts.entity.Battle;
+import com.mac.term.game.beasts.entity.Creature;
 import com.mac.term.game.beasts.entity.User;
-import com.mac.term.game.beasts.repository.ButtlePhraseRepo;
-import com.mac.term.game.beasts.repository.CreatureRepo;
-import com.mac.term.game.beasts.repository.LocationRepo;
-import com.mac.term.game.beasts.repository.UserRepo;
+import com.mac.term.game.beasts.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Component
 public class UserInfoControl {
@@ -64,8 +68,23 @@ public class UserInfoControl {
                 u.setLevel(5);
                 break;
         }
-
+        u.setMoney((int)(u.getMoney() + u.getCreatures().size()*1.5));
         u.setExp((int)vn*u.getCreatures().size()/3);
         userRepo.save(u);
+    }
+    public void saveSteps(User user, List<Strike> strikes, BattleRepo battleRepo) {
+        StringBuilder builder = new StringBuilder();
+        for (Strike s : strikes){
+            builder.append(s.msg);
+            builder.append("\n");
+        }
+        Battle battle = new Battle();
+        battle.setDate(LocalDateTime.now());
+        battle.setGamer(user);
+        battle.setSteps(builder.toString());
+        battle.setWinner(strikes.get(strikes.size() - 1).damage > 0);
+//        battleRepo.save(battle);
+        System.out.println("save battle");
+
     }
 }

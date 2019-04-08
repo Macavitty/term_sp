@@ -31,7 +31,7 @@ public class BeastGenerator {
     public Set<Creature> generateEnemies(String userId) {
         List<Creature> fit = creatureRepo.findAllByOwnerIdIsNot(userId);
         Set<Creature> ret = new HashSet<>();
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < 5; i++){
             ret.add(fit.get(randomizer.rand(0, fit.size() - 1)));
         }
         bandsStore.setEnemies(userId, ret);

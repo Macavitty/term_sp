@@ -39,6 +39,7 @@ public class UserCreaturesControl {
             e.setOwner(u);
             creatureRepo.save(e);
         }
+        System.out.println("take");
     }
 
 }
