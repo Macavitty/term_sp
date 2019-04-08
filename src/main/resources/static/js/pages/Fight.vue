@@ -89,7 +89,6 @@
 <script>
     import DefaultModal from 'js/components/DefaultModal.vue'
     import axios from 'axios'
-    import Header from "../components/Header";
 
     export default {
         name: 'Fight',

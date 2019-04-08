@@ -83,9 +83,12 @@ export default {
             this.showModal = false
             axios
                 .get('/fight/pay/' + this.cost)
-            setTimeout(()=>{
-                this.updateInfo()
-            }, 1000)
+                .then(result=>{
+                    let old_money = this.user_info.money
+                    this.user_info.money = result.data.user.money
+                    if (this.user_info.money == old_money)
+                        alert('Вы слишком нищий, сражайтесь!')
+                })
         },
         fight: function () {
             location.href = '/fight'
@@ -104,13 +107,6 @@ export default {
                 .get(url)
                 .then(result => {
                     console.log(result)
-                })
-        },
-        updateInfo() {
-            axios
-                .get('/user')
-                .then(result => {
-                    this.header.user = result.data.user
                 })
         },
         eventCanvas: function (e) {
