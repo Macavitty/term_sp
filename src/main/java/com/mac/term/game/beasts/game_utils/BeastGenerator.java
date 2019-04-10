@@ -31,7 +31,7 @@ public class BeastGenerator {
     public Set<Creature> generateEnemies(String userId) {
         List<Creature> fit = creatureRepo.findAllByOwnerIdIsNot(userId);
         Set<Creature> ret = new HashSet<>();
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 4; i++){
             ret.add(fit.get(randomizer.rand(0, fit.size() - 1)));
         }
         bandsStore.setEnemies(userId, ret);
@@ -70,12 +70,24 @@ public class BeastGenerator {
         List<Creature> active = new ArrayList<>();
         List<Creature> passive = new ArrayList<>();
 
-        if (total.size() != 0) {
-            for (int i = 0; i < total.size() / 2 + 1; i++) {
-                active.add(total.get(i));
+        int s = total.size();
+
+        if (s != 0) {
+            if (s >= 4){
+                for (int i = 0; i < 4; i++) {
+                    active.add(total.get(i));
+                }
+                for (int i = 4; i < s; i++) {
+                    passive.add(total.get(i));
+                }
             }
-            for (int i = total.size() / 2 + 1; i < total.size(); i++) {
-                passive.add(total.get(i));
+            else {
+                for (int i = 0; i < s / 2 + 1; i++) {
+                    active.add(total.get(i));
+                }
+                for (int i = s / 2 + 1; i < s; i++) {
+                    passive.add(total.get(i));
+                }
             }
         }
         bandsStore.setActive(userId, active);
