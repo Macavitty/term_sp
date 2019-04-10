@@ -57,10 +57,13 @@ public class GameController {
         Map<Object, Object> ret = new HashMap<>();
         Set<Creature> enemies = bandsStore.getEnemies(user.getId());
         enemies = enemies.size() == 0 ? beastGenerator.generateEnemies(user.getId()) : enemies;
+        Set<Creature> active = bandsStore.getActive(user.getId());
         strikes = battleSteps.letTheBattleBe(enemies.size());
+
         System.out.println(strikes);
         ret.put("msgs", strikes);
         ret.put("enemies", enemies);
+        ret.put("active", active);
         return ret;
     }
 
